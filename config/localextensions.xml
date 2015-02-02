@@ -75,7 +75,10 @@
         <extension name="acceleratorfacades" />
         <extension name="acceleratorcms" />
         <extension name="acceleratorstorefrontcommons" />
-
+		
+        <!-- ext-custom -->
+        <extension name="training" />
+		
         <!-- entitlements -->
         <extension name="emsui" />
 

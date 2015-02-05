@@ -1,7 +1,11 @@
 .classpath
 .project
 .settings/
+.externalToolBuilders/
 eclipsebin/
 gensrc/
 classes/
 testclasses/
+platformhome.properties
+*.log
+

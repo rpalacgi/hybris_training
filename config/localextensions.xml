@@ -64,11 +64,11 @@
         <extension name="ycommercewebserviceshmc" />
         <extension name="yacceleratorfulfilmentprocess" />
         <extension name="yaddon" />
-        <extension name="ytelcoacceleratorcockpits" />
-        <extension name="ytelcoacceleratorfacades" />
-        <extension name="ytelcoacceleratorstorefront" />
-        <extension name="ytelcoacceleratorcore" />
-        <extension name="ytelcoacceleratorinitialdata" />
+        <extension name="customtelcoacceleratorcockpits" />
+        <extension name="customtelcoacceleratorfacades" />
+        <extension name="customtelcoacceleratorstorefront" />
+        <extension name="customtelcoacceleratorcore" />
+        <extension name="customtelcoacceleratorinitialdata" />
                                          
         <!-- ext-accelerator -->
         <extension name="acceleratorservices" />

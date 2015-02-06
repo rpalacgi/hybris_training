@@ -1,11 +1,22 @@
+# Eclipse
 .classpath
 .project
 .settings/
 .externalToolBuilders/
 eclipsebin/
-gensrc/
 classes/
 testclasses/
+
+# Hybris
+gensrc/
 platformhome.properties
+extensioninfo.xsd
+build.xml
+beans.xsd
+items.xsd
+*-testclasses.xml
+*-webtestclasses.xml
+
+# Other
 *.log
 

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<extensioninfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="extensioninfo.xsd">
+	<extension abstractclassprefix="Generated" classprefix="Traininghmc" managername="TraininghmcManager"
+		managersuperclass="de.hybris.platform.jalo.extension.Extension" name="traininghmc">
+		<coremodule generated="true" manager="com.epam.traininghmc.jalo.TraininghmcManager" packageroot="com.epam.traininghmc" />
+		<webmodule jspcompile="false" webroot="/traininghmc" />
+		<hmcmodule extensionclassname="com.epam.training.hmc.TrainingHMCExtension" />
+	</extension>
+</extensioninfo>

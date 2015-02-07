@@ -78,6 +78,7 @@
 		
         <!-- ext-custom -->
         <extension name="training" />
+        <extension name="traininghmc" />
 		
         <!-- entitlements -->
         <extension name="emsui" />

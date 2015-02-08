@@ -1,0 +1,4 @@
+INSERT_UPDATE customer;name;uid[unique=true];description;organizations(id)
+;Bob;bob;Test customer 1;01
+;Bill;bill;Test customer 2;01
+;Page;page;Test customer 3

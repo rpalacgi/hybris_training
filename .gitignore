@@ -4,6 +4,7 @@
 .settings/
 .externalToolBuilders/
 eclipsebin/
+bin/
 classes/
 testclasses/
 
@@ -14,8 +15,11 @@ extensioninfo.xsd
 build.xml
 beans.xsd
 items.xsd
+hmc.xsd
 *-testclasses.xml
 *-webtestclasses.xml
+*.build.number
+
 
 # Other
 *.log

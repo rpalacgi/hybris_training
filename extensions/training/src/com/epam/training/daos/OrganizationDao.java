@@ -5,9 +5,6 @@ import java.util.List;
 import com.epam.training.model.OrganizationModel;
 
 
-/**
- *
- */
 public interface OrganizationDao
 {
 	OrganizationModel findOrganizationById(Integer id);

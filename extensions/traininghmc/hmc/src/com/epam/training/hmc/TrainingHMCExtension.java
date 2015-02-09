@@ -1,6 +1,3 @@
-/**
- *
- */
 package com.epam.training.hmc;
 
 import de.hybris.platform.hmc.AbstractEditorMenuChip;
@@ -20,9 +17,6 @@ import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 
 
-/**
- *
- */
 public class TrainingHMCExtension extends HMCExtension
 {
 	private static final String RESOURCE_PATH = "com.epam.training.hmc.locales";

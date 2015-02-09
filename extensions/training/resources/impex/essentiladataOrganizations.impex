@@ -1,0 +1,2 @@
+INSERT_UPDATE organization;id[unique=true];name;email;phoneNumber
+;01;Home Corp.;bonavik@gmail.com;911;

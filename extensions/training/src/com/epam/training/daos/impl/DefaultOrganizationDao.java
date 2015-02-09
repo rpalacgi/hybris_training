@@ -13,7 +13,7 @@ import com.epam.training.model.OrganizationModel;
 
 
 @Component(value = "organizationDao")
-public class OrganizationDaoImpl implements OrganizationDao
+public class DefaultOrganizationDao implements OrganizationDao
 {
 	@Autowired
 	private FlexibleSearchService flexibleSearchService;

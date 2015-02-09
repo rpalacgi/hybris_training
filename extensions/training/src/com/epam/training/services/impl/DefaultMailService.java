@@ -20,7 +20,7 @@ import com.epam.training.services.MailService;
 
 
 @Component(value = "mailService")
-public class MailServiceImpl implements MailService
+public class DefaultMailService implements MailService
 {
 	private static final String SUBJECT = "Your customers list";
 	private static final String NO_CUSTOMERS_TEXT = "No customers :(";

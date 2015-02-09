@@ -11,7 +11,7 @@ import com.epam.training.services.OrganizationService;
 
 
 @Component(value = "organizationService")
-public class OrganizationServiceImpl implements OrganizationService
+public class DefaultOrganizationService implements OrganizationService
 {
 	@Autowired
 	private OrganizationDao organizationDao;

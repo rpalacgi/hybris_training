@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<configuration xmlns="hybris.de/schemas/hmc/generic" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="hybris.de/schemas/hmc/generic hmc.xsd">
+	<explorertree>
+		<group name="Traininggroup">
+			<typeref type="Organization" />
+		</group>
+	</explorertree>
+
+	<type name="Organization" mode="append">
+		<organizer>
+			<search mode="replace">
+				<condition attribute="id"></condition>
+				<condition attribute="name" />
+				<condition attribute="phoneNumber" />
+				<condition attribute="email" />
+			</search>
+			<result>
+				<listview mode="replace">
+					<itemlayout>
+						<attribute name="id"></attribute>
+						<attribute name="name"></attribute>
+						<attribute name="phoneNumber"></attribute>
+						<attribute name="email"></attribute>
+					</itemlayout>
+				</listview>
+			</result>
+			<editor>
+				<essentials>
+					<listlayout>
+						<attribute name="id"></attribute>
+					</listlayout>
+				</essentials>
+				<tab name="tab.training">
+					<section name="section.training">
+						<listlayout>
+							<attribute name="name"></attribute>
+							<attribute name="phoneNumber"></attribute>
+							<attribute name="email"></attribute>
+						</listlayout>
+					</section>
+				</tab>
+			</editor>
+		</organizer>
+	</type>
+</configuration>

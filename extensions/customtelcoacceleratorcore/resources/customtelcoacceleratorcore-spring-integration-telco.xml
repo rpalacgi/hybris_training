@@ -38,6 +38,10 @@
 		p:mapping="point-of-service" p:converter-ref="batchPointOfServiceConverter" />
 	<bean id="batchWarehouseConverterMapping" class="de.hybris.platform.acceleratorservices.dataimport.batch.converter.mapping.impl.DefaultConverterMapping"
 		p:mapping="warehouse" p:converter-ref="batchWarehouseConverter" />
+	<bean id="batchOrganizationConverterMapping" class="de.hybris.platform.acceleratorservices.dataimport.batch.converter.mapping.impl.DefaultConverterMapping"
+		p:mapping="organization" p:converter-ref="batchOrganizationConverter" />
+	
+	<alias name="batchExtendedCustomerConverter" alias="batchCustomerConverter"/>
 
 	<bean id="batchPointOfServiceConverter" class="de.hybris.platform.acceleratorservices.dataimport.batch.converter.impl.DefaultImpexConverter">
 		<property name="header">
@@ -60,6 +64,35 @@
 			<value>;{+0};{1};{2};{3}</value>
 		</property>
 		<property name="type" value="Warehouse" />
+	</bean>
+	<bean id="batchOrganizationConverter" class="de.hybris.platform.acceleratorservices.dataimport.batch.converter.impl.DefaultImpexConverter">
+		<property name="header">
+			<value>
+				INSERT_UPDATE Organization;id[unique=true];name;phoneNumber;email;customers(uid)
+			</value>
+		</property>
+		<property name="impexRow">
+			<value>;{+0};{1};{2};{3};{4}</value>
+		</property>
+		<property name="type" value="Organization" />
+	</bean>
+	<bean id="batchExtendedCustomerConverter" class="de.hybris.platform.acceleratorservices.dataimport.batch.converter.impl.DefaultImpexConverter">
+		<property name="header">
+			<value>#{defaultImpexProductHeader}
+				# Insert Customer
+				$passwordEncoding=md5
+				$defaultPassword=1234
+				$setName=name[cellDecorator=de.hybris.platform.acceleratorservices.dataimport.batch.decorator.CustomerNameDecorator]
+				$setPassword=@password[translator=de.hybris.platform.acceleratorservices.dataimport.batch.converter.RandomPasswordTranslator][default='$passwordEncoding:$defaultPassword']
+				$defaultAttemptCount=0
+				$defaultStatus=false
+				INSERT_UPDATE Customer;uid[unique=true];$setName;title(code);$setPassword;attemptCount[default=$defaultAttemptCount];status[default=$defaultStatus];organizations(id)[collection-delimiter=|]
+			</value>
+		</property>
+		<property name="impexRow">
+			<value>;{+0};{1} {2};{3};{4};{5};{6};{7}</value>
+		</property>
+		<property name="type" value="Customer" />
 	</bean>
 	
 </beans>

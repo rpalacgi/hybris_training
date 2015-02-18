@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<extensioninfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="extensioninfo.xsd">
+	<extension abstractclassprefix="Generated" classprefix="Trainingbackoffice" managername="TrainingbackofficeManager" managersuperclass="de.hybris.platform.jalo.extension.Extension" name="trainingbackoffice">
+		<requires-extension name="backoffice"/> 
+		<coremodule generated="true" manager="com.epam.training.jalo.TrainingbackofficeManager" packageroot="com.epam.training"/>
+		<meta key="backoffice-module" value="true"/>
+	</extension>
+</extensioninfo>

@@ -1,3 +1,144 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <config xmlns="http://www.hybris.com/cockpit/config">
+
+	<context component="explorer-tree" merge-by="module">
+		<n:explorer-tree xmlns:n="http://www.hybris.com/cockpitng/config/explorertree">
+			<n:navigation-node id="typenode_training">
+				<n:type-node id="typenode_organization" code="Organization" />
+			</n:navigation-node>
+		</n:explorer-tree>
+	</context>
+
+	<context type="Organization" component="listview">
+		<list:list-view xmlns:list="http://www.hybris.com/cockpitng/component/listView">
+			<list:column qualifier="id" />
+			<list:column qualifier="name" />
+			<list:column qualifier="email" />
+			<list:column qualifier="phoneNumber" />
+			<list:column qualifier="customers" />
+		</list:list-view>
+	</context>
+
+	<context type="Organization" component="editor-area">
+		<editorArea:editorArea xmlns:editorArea="http://www.hybris.com/cockpitng/component/editorArea">
+			<editorArea:tab name="General">
+				<editorArea:section name="section_essential">
+					<editorArea:attribute qualifier="id" />
+					<editorArea:attribute qualifier="name" />
+				</editorArea:section>
+				<editorArea:section name="section_contactinfo">
+					<editorArea:attribute qualifier="phoneNumber" />
+					<editorArea:attribute qualifier="email" />
+				</editorArea:section>
+				<editorArea:section name="section_customers">
+					<editorArea:attribute qualifier="customers" />
+				</editorArea:section>
+			</editorArea:tab>
+		</editorArea:editorArea>
+	</context>
+
+	<context type="Organization" component="simple-search">
+		<simple-search:simple-search xmlns:simple-search="http://www.hybris.com/cockpitng/config/simplesearch">
+			<simple-search:field xmlns="http://www.hybris.com/cockpitng/config/simplesearch" name="name" />
+			<simple-search:sort-field xmlns="http://www.hybris.com/cockpitng/config/simplesearch" asc="false"
+				name="name" />
+		</simple-search:simple-search>
+	</context>
+
+	<context type="Organization" component="advanced-search">
+		<advanced-search:advanced-search xmlns:advanced-search="http://www.hybris.com/cockpitng/config/advancedsearch"
+			xmlns="http://www.hybris.com/cockpitng/config/advancedsearch">
+			<field-list>
+				<field name="id" selected="true" />
+				<field name="name" selected="true" />
+				<field name="phoneNumber" selected="true" />
+				<field name="email" selected="true" />
+				<field name="customers" selected="true" />
+			</field-list>
+		</advanced-search:advanced-search>
+	</context>
+
+	<context type="Organization" component="simple-search">
+		<simple-search:simple-search xmlns:simple-search="http://www.hybris.com/cockpitng/config/simplesearch">
+			<simple-search:field xmlns="http://www.hybris.com/cockpitng/config/simplesearch" name="name" />
+			<simple-search:sort-field xmlns="http://www.hybris.com/cockpitng/config/simplesearch" asc="false"
+				name="name" />
+		</simple-search:simple-search>
+	</context>
+
+	<context component="create-wizard" type="Organization">
+		<wz:flow xmlns:wz="http://www.hybris.com/cockpitng/config/wizard-config" id="OrganizationWizard" title="create.organization.title">
+			<wz:prepare id="organizationPrepare">
+				<wz:initialize property="newOrganization" type="Organization" />
+			</wz:prepare>
+			<wz:step id="step1" label="create.organization.essential.label" sublabel="create.organization.essential.sublabel">
+				<wz:content id="step1.content">
+					<wz:property-list root="newOrganization">
+						<wz:property qualifier="id"/>
+						<wz:property qualifier="name"/>
+					</wz:property-list>
+				</wz:content>
+				<wz:navigation id="step1.navigation">
+					<wz:cancel />
+					<wz:next visible="!#empty(newOrganization.id)" />
+					<wz:done visible="!#empty(newOrganization.id) and !#empty(newOrganization.email) and !#empty(newOrganization.phoneNumber)">
+						<wz:save property="newOrganization" />
+					</wz:done>
+				</wz:navigation>
+			</wz:step>
+			<wz:step id="step2" label="create.organization.contactinfo.label" sublabel="create.organization.contactinfo.sublabel">
+				<wz:content id="step2.content">
+					<wz:property-list root="newOrganization">
+						<wz:property qualifier="email" type="java.lang.String" />
+						<wz:property qualifier="phoneNumber" type="java.lang.String" />
+					</wz:property-list>
+				</wz:content>
+				<wz:navigation id="step2.navigation">
+					<wz:cancel />
+					<wz:back />
+					<wz:next visible="!#empty(newOrganization.email) and !#empty(newOrganization.phoneNumber)" />
+					<wz:done visible="!#empty(newOrganization.email) and !#empty(newOrganization.phoneNumber)">
+						<wz:save property="newOrganization" />
+					</wz:done>
+				</wz:navigation>
+			</wz:step>
+			<wz:step id="step3" label="create.organization.customers.label" sublabel="create.organization.customers.sublabel">
+				<wz:info label="create.organization.customers.info.label" position="top" />
+				<wz:content id="step3.content">
+					<wz:property qualifier="newOrganization.customers" />
+				</wz:content>
+				<wz:navigation id="step3.navigation">
+					<wz:cancel />
+					<wz:back />
+					<wz:done>
+						<wz:save property="newOrganization" />
+					</wz:done>
+				</wz:navigation>
+			</wz:step>
+		</wz:flow>
+	</context>
+
+
+	<context type="Customer" component="editor-area" merge-by="module">
+		<editorArea:editorArea xmlns:editorArea="http://www.hybris.com/cockpitng/component/editorArea">
+			<editorArea:tab name="tab_training" position="10">
+				<editorArea:section name="section_training">
+					<editorArea:attribute qualifier="attemptCount" />
+					<editorArea:attribute qualifier="status" />
+					<editorArea:attribute qualifier="organizations" />
+				</editorArea:section>
+			</editorArea:tab>
+		</editorArea:editorArea>
+	</context>
+
+	<context type="Customer" component="advanced-search" merge-by="module">
+		<advanced-search:advanced-search xmlns:advanced-search="http://www.hybris.com/cockpitng/config/advancedsearch"
+			xmlns="http://www.hybris.com/cockpitng/config/advancedsearch">
+			<field-list>
+				<field name="status" selected="true" />
+				<field name="attemptCount" selected="false" />
+				<field name="organizations" selected="false" />
+			</field-list>
+		</advanced-search:advanced-search>
+	</context>
 </config>

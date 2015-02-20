@@ -19,6 +19,7 @@
 		<requires-extension name="btg"/>
 		<requires-extension name="customtelcoacceleratorfacades"/>
 		<requires-extension name="commercesearch"/>
+		<requires-extension name="training"/>
 
 		<webmodule jspcompile="false" webroot="/customtelcoacceleratorstorefront"/>
 

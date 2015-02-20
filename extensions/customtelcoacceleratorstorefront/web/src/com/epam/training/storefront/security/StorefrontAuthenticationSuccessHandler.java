@@ -8,8 +8,8 @@
  * ("Confidential Information"). You shall not disclose such Confidential
  * Information and shall use it only in accordance with the terms of the
  * license agreement you entered into with hybris.
- * 
- *  
+ *
+ *
  */
 package com.epam.training.storefront.security;
 
@@ -19,7 +19,6 @@ import de.hybris.platform.commercefacades.order.CartFacade;
 import de.hybris.platform.commerceservices.enums.UiExperienceLevel;
 import de.hybris.platform.commerceservices.order.CommerceCartRestorationException;
 import de.hybris.platform.servicelayer.session.SessionService;
-import com.epam.training.storefront.constants.WebConstants;
 
 import java.io.IOException;
 import java.util.Map;
@@ -32,6 +31,9 @@ import org.springframework.beans.factory.annotation.Required;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
 
+import com.epam.training.services.AccountLockService;
+import com.epam.training.storefront.constants.WebConstants;
+
 
 /**
  * Success handler initializing user settings and ensuring the cart is handled correctly
@@ -43,6 +45,7 @@ public class StorefrontAuthenticationSuccessHandler extends SavedRequestAwareAut
 	private CartFacade cartFacade;
 	private SessionService sessionService;
 	private BruteForceAttackCounter bruteForceAttackCounter;
+	private AccountLockService accountLockService;
 
 	private Map<UiExperienceLevel, Boolean> forceDefaultTargetForUiExperienceLevel;
 
@@ -77,6 +80,7 @@ public class StorefrontAuthenticationSuccessHandler extends SavedRequestAwareAut
 		}
 
 		getBruteForceAttackCounter().resetUserCounter(getCustomerFacade().getCurrentCustomer().getUid());
+		getAccountLockService().handleSuccessLogin(getCustomerFacade().getCurrentCustomer().getUid());
 		super.onAuthenticationSuccess(request, response, authentication);
 	}
 
@@ -153,5 +157,15 @@ public class StorefrontAuthenticationSuccessHandler extends SavedRequestAwareAut
 	public void setBruteForceAttackCounter(final BruteForceAttackCounter bruteForceAttackCounter)
 	{
 		this.bruteForceAttackCounter = bruteForceAttackCounter;
+	}
+
+	public AccountLockService getAccountLockService()
+	{
+		return accountLockService;
+	}
+
+	public void setAccountLockService(final AccountLockService accountLockService)
+	{
+		this.accountLockService = accountLockService;
 	}
 }

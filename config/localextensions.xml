@@ -79,6 +79,7 @@
         <!-- ext-custom -->
         <extension name="training" />
         <extension name="traininghmc" />
+        <extension name="trainingbackoffice" />
 		
         <!-- entitlements -->
         <extension name="emsui" />
